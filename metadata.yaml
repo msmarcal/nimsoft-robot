@@ -1,0 +1,35 @@
+name: nimsoft-robot
+summary: Nimsoft Robot for reporting to CA CIM
+maintainer: Vern Hart <vern.hart@canonical.com>
+description: |
+  DX Infrastructure Manager (formerly CA UIM) is a scalable IT monitoring
+  solution that provides 360-degree visibility into systems and infrastructure
+  performance. It delivers a single, unified architecture for both traditional
+  and cloud environments, enabling you to proactively monitor performance and
+  availability.
+tags:
+  - logging
+  - monitoring
+  - ops
+resources:
+  nimsoft-robot-package:
+    type: file
+    filename: nimsoft-robot.deb
+    description: |
+      DX Infrastructure Manager (formerly CA UIM) is a scalable IT monitoring
+      solution that provides 360-degree visibility into systems and infrastructure
+      performance. It delivers a single, unified architecture for both traditional
+      and cloud environments, enabling you to proactively monitor performance and
+      availability.
+series:
+  - bionic
+subordinate: true
+#provides:
+#  provides-relation:
+#    interface: juju-info
+requires:
+  host-system:
+    interface: juju-info
+#peers:
+#  peer-relation:
+#    interface: interface-name

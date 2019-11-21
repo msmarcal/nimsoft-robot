@@ -1,0 +1,6 @@
+includes:
+ - "layer:basic"
+ - "layer:apt"
+ - "interface:juju-info"
+
+repo: https://github.com/aym-frikha/nimsoft-robot

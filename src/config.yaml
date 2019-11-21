@@ -1,0 +1,33 @@
+options:
+  domain:
+    type: string
+    default: "Default Value"
+    description: "N/A"
+  hubip:
+    type: string
+    default: "Default Value"
+    description: "N/A"
+  hub:
+    type: string
+    default: "Default Value"
+    description: "N/A"
+  hub-robot-name:
+    type: string
+    default: "Default Value"
+    description: "N/A"
+  secondary-domain:
+    type: string
+    default: "Default Value"
+    description: "N/A"
+  secondary-hub:
+    type: string
+    default: "Default Value"
+    description: "N/A"
+  secondary-hub-robot-name:
+    type: string
+    default: "Default Value"
+    description: "N/A"
+  secondary-hubip:
+    type: string
+    default: "Default Value"
+    description: "N/A"

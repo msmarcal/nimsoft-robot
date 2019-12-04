@@ -12,7 +12,7 @@ from charmhelpers.core.host import file_hash, service
 from charmhelpers.core.templating import render
 from charmhelpers.core.host import rsync
 
-NIMBUS_ROBOT_CONFIG = '/opt/nms-robot-vars.cfg'
+NIMBUS_ROBOT_CONFIG = '/opt/nimsoft/robot/robot.cfg'
 
 
 @when_not('nimsoft-robot.installed')
@@ -72,15 +72,13 @@ def render_nimsoft_robot_config():
         'private_address': unit_private_ip(),
         'hostname': os.uname()[1]
     }
-    render('nms-robot-vars.cfg', NIMBUS_ROBOT_CONFIG, context=context)
+    render('robot.cfg', NIMBUS_ROBOT_CONFIG, context=context)
     cfg_new_hash = file_hash(NIMBUS_ROBOT_CONFIG)
 
     rsync(charm_dir() + '/files/request_linux_prod.cfg',
           '/opt/nimsoft/request.cfg')
 
     if cfg_original_hash != cfg_new_hash:
-        # run RobotConfigurer.sh script
-        cmd = ['/opt/nimsoft/install/RobotConfigurer.sh']
         hookenv.log(cmd)
         check_call(cmd)
         service('restart', 'nimbus')

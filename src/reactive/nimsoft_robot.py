@@ -79,7 +79,5 @@ def render_nimsoft_robot_config():
           '/opt/nimsoft/request.cfg')
 
     if cfg_original_hash != cfg_new_hash:
-        hookenv.log(cmd)
-        check_call(cmd)
         service('restart', 'nimbus')
         status.active('nimbus ready.')

@@ -79,7 +79,7 @@ def render_nimsoft_robot_config():
           '/opt/nimsoft/request.cfg')
 
     # Install the nimbus service
-    rsync(charm_dir() + 'files/nimbus.service',
+    rsync(charm_dir() + '/files/nimbus.service',
           '/lib/systemd/system/nimbus.service')
 
     if cfg_original_hash != cfg_new_hash:

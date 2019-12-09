@@ -1,33 +1,33 @@
 options:
   domain:
     type: string
-    default: "Default Value"
-    description: "N/A"
+    default: ""
+    description: "Domain to which the robot belongs. Case-sensitive."
   hubip:
     type: string
-    default: "Default Value"
-    description: "N/A"
+    default: ""
+    description: "IP address of the hub that manages this robot (referred to as the parent hub)."
   hub:
     type: string
-    default: "Default Value"
-    description: "N/A"
+    default: ""
+    description: "Name of the parent hub."
   hub-robot-name:
     type: string
-    default: "Default Value"
-    description: "N/A"
+    default: ""
+    description: "Robot name of the parent hub. Case-sensitive."
   secondary-domain:
     type: string
-    default: "Default Value"
-    description: "N/A"
+    default: ""
+    description: "Domain of the Secondary Hub that manages the robot if its assigned parent Hub is unavailable."
   secondary-hub:
     type: string
-    default: "Default Value"
-    description: "N/A"
+    default: ""
+    description: "Hub that manages the robot if its assigned parent hub is unavailable."
   secondary-hub-robot-name:
     type: string
-    default: "Default Value"
-    description: "N/A"
+    default: ""
+    description: "Name of the secondary Hub’s robot."
   secondary-hubip:
     type: string
-    default: "Default Value"
-    description: "N/A"
+    default: ""
+    description: "IP address of the Secondary Hub. Overridden if the DNS name is specified."

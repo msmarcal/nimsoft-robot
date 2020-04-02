@@ -1,0 +1,7 @@
+This is a placeholder file
+
+The deb file should be obtainable from CA (Broadcom) via their CA-UIM (or DX
+IM) installation package. Additionally, you may be able to find it in the
+Archive section of [nimsoft-archive][Nimsoft Support].
+
+[nimsoft-archive]: http://support.nimsoft.com/Default.aspx?center=felles/archive

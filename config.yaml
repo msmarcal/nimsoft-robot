@@ -1,12 +1,16 @@
+---
 options:
   domain:
     type: string
     default: ""
-    description: "Domain to which the robot belongs. Case-sensitive."
+    description: |
+      Domain to which the robot belongs. Case-sensitive.
   hubip:
     type: string
     default: ""
-    description: "IP address of the hub that manages this robot (referred to as the parent hub)."
+    description: |
+      IP address of the hub that manages this robot (referred to as the parent
+      hub).
   hub:
     type: string
     default: ""
@@ -18,11 +22,14 @@ options:
   secondary-domain:
     type: string
     default: ""
-    description: "Domain of the Secondary Hub that manages the robot if its assigned parent Hub is unavailable."
+    description: |
+      Domain of the Secondary Hub that manages the robot if its assigned parent
+      Hub is unavailable.
   secondary-hub:
     type: string
     default: ""
-    description: "Hub that manages the robot if its assigned parent hub is unavailable."
+    description: |
+      Hub that manages the robot if its assigned parent hub is unavailable.
   secondary-hub-robot-name:
     type: string
     default: ""
@@ -30,4 +37,12 @@ options:
   secondary-hubip:
     type: string
     default: ""
-    description: "IP address of the Secondary Hub. Overridden if the DNS name is specified."
+    description: |
+      IP address of the Secondary Hub. Overridden if the DNS name is specified.
+  aa-profile-mode:
+    type: string
+    default: 'enforce'
+    description: |
+      Enable apparmor profile. Valid settings: 'complain', 'enforce' or
+      'disable'.
+      AA enforce by default.

@@ -121,6 +121,5 @@ def render_nimsoft_robot_config():
 
     if cfg_original_hash != cfg_new_hash:
         service('restart', 'nimbus')
-        hookenv.status_set('active', 'nimbus ready.')
 
     hookenv.status_set('active', 'ready')

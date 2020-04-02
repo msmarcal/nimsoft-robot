@@ -1,0 +1,62 @@
+# Last Modified: Wed Feb 19 19:34:04 2020
+#include <tunables/global>
+
+# AppArmor policy for nimsoft-robot CA UIM
+# Mode: {{aa_profile_mode}}
+
+/opt/nimsoft/bin/nimbus {
+  #include <abstractions/base>
+  #include <abstractions/bash>
+  #include <abstractions/nameservice>
+
+  capability dac_override,
+  capability dac_read_search,
+  capability net_admin,
+  capability sys_ptrace,
+
+  ptrace,
+
+  /bin/cat mrix,
+  /bin/dash mrix,
+  /bin/ls mrix,
+  /bin/mktemp mrix,
+  /bin/mv mrix,
+  /bin/ps mrix,
+  /opt/nimsoft/** mr,
+  /opt/nimsoft/probes/network/ntp_response/ntp_response mrix,
+  /opt/nimsoft/probes/service/hdb/hdb mrix,
+  /opt/nimsoft/probes/system/cdm/cdm mrix,
+  /opt/nimsoft/probes/system/fsmounts/fsmounts mrix,
+  /opt/nimsoft/probes/system/logmon/check_reboot.sh mrix,
+  /opt/nimsoft/probes/system/logmon/logmon mrix,
+  /opt/nimsoft/probes/system/processes/processes mrix,
+  /opt/nimsoft/robot/controller mrix,
+  /opt/nimsoft/robot/spooler mrix,
+  /proc/** r,
+  /usr/bin/file mrix,
+  /usr/bin/gawk mrix,
+  /usr/bin/head mrix,
+  /usr/bin/wc mrix,
+  /usr/bin/who mrix,
+  owner /dev/tty r,
+  owner /lib/x86_64-linux-gnu/ld-*.so mr,
+  owner /opt/nimsoft/** rw,
+  owner /proc/ r,
+  owner /run/utmp rk,
+  owner /tmp/* rw,
+
+
+  ^/opt/nimsoft/robot/controller {
+    #include <abstractions/base>
+
+    /bin/cat mrix,
+    /bin/ls mrix,
+    /proc/** r,
+    owner /etc/group r,
+    owner /etc/nsswitch.conf r,
+    owner /etc/passwd r,
+    owner /opt/nimsoft/robot/controller m,
+    owner /{usr/,}lib{,32,64}/** mr,
+
+  }
+}

@@ -27,6 +27,8 @@ from charmhelpers.contrib.openstack import context
 
 ROBOT_CONFIG = 'robot.cfg'
 ROBOT_CONFIG_PATH = ('/opt/nimsoft/robot/{}'.format(ROBOT_CONFIG))
+DIST_REQ = 'request.cfg'
+DIST_REQ_PATH = '/opt/nimsoft/request.cfg'
 NIMBUS_AA_PROFILE = 'opt.nimsoft.bin.nimbus'
 NIMBUS_AA_PROFILE_PATH = ('/etc/apparmor.d/{}'.format(NIMBUS_AA_PROFILE))
 
@@ -85,7 +87,8 @@ def install_nimsoft_robot():
 @when('config.changed')
 @when('nimsoft-robot.installed')
 def render_nimsoft_robot_config():
-    """Create the robot.conf config file.
+    """
+    Create the required config files.
 
     Renders the appropriate template for the Nimbus Robot
     """
@@ -105,18 +108,21 @@ def render_nimsoft_robot_config():
         'aa_profile_mode': config("aa-profile-mode")
     }
 
-    render('robot.cfg', ROBOT_CONFIG_PATH, context=context)
+    # Render robot.cfg
+    render(ROBOT_CONFIG, ROBOT_CONFIG_PATH, context=context)
     cfg_new_hash = file_hash(ROBOT_CONFIG)
 
-    rsync(charm_dir() + '/files/request_linux_prod.cfg',
-          '/opt/nimsoft/request.cfg')
+    # Render request.cfg
+    render(DIST_REQ, DIST_REQ_PATH, context=context)
 
     # Install the nimbus service
     rsync(charm_dir() + '/files/nimbus.service',
           '/lib/systemd/system/nimbus.service')
 
+    # Render AppArmor profile
     render(NIMBUS_AA_PROFILE, NIMBUS_AA_PROFILE_PATH, context=context)
 
+    # Set AppArmor context
     NimbusAppArmorContext().setup_aa_profile()
 
     if cfg_original_hash != cfg_new_hash:
